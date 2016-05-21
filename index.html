@@ -4,8 +4,9 @@
     <script type="text/javascript">
     function getRating() {
         var param = document.getElementById("query").value;
-        var res = contracts["Rating"].contract.avgRatings(param);
-        document.getElementById("queryres").innerText = res;
+        var total = contracts["Rating"].contract.avgRatings(param);
+		var numberOfReviews = contracts["Rating"].contract.userRatings(param).length;
+		document.getElementById("queryres").innerText = "avg rating = " + total/numberOfReviews;
     }
 
     function setRating() {

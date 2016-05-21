@@ -62,7 +62,7 @@
 							"contractId": "Rating",
 							"functionId": "Rating",
 							"gas": {
-								"value": "105005"
+								"value": "255574"
 							},
 							"gasAuto": true,
 							"gasPrice": {
@@ -84,7 +84,7 @@
 							"contractId": "<Rating - 0>",
 							"functionId": "setRating",
 							"gas": {
-								"value": "42287"
+								"value": "104079"
 							},
 							"gasAuto": true,
 							"gasPrice": {
@@ -95,7 +95,8 @@
 							"isFunctionCall": true,
 							"label": "<Rating - 0>.setRating()",
 							"parameters": {
-								"_key": "0x546974616e696300000000000000000000000000000000000000000000000000",
+								"_moviekey": "0x746974616e696300000000000000000000000000000000000000000000000000",
+								"_userId": "0x6a65616e00000000000000000000000000000000000000000000000000000000",
 								"_value": "7"
 							},
 							"saveStatus": true,
