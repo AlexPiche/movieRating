@@ -14,10 +14,22 @@ contract Sample
 }
 
 contract Rating {
-	function setRating(bytes32 _moviekey, uint256 _value) {
-		ratings[_moviekey] = _value;
+	
+	struct UserRating
+    {
+        bytes32 userId;   // short name (up to 32 bytes)
+        uint rating; // number of accumulated votes
+    }
+	
+	function setRating(bytes32 _userId, bytes32 _moviekey, uint256 _value) {
+		userRatings[_moviekey] = UserRating({
+			userId: _userId,
+			rating: _value
+		});
 	}
-	mapping (bytes32 => uint256) public ratings;
+	mapping (bytes32 => UserRating) public userRatings;
+	
+
 }
 
 contract ratingAverage {
