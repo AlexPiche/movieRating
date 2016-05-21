@@ -21,15 +21,25 @@ contract Rating {
         uint rating; // number of accumulated votes
     }
 	
+	mapping (bytes32 => UserRating[]) public userRatings;
+	mapping (bytes32 => uint) public avgRatings;
+
+	
 	function setRating(bytes32 _userId, bytes32 _moviekey, uint256 _value) {
-		userRatings[_moviekey] = UserRating({
+		userRatings[_moviekey].push(UserRating({
 			userId: _userId,
 			rating: _value
-		});
+		}));
+		avgRatings[_moviekey] = averageRating(_moviekey);
 	}
-	mapping (bytes32 => UserRating) public userRatings;
 	
-
+	function averageRating(bytes32 _moviekey) returns (uint average) {
+		uint total = 0;
+		for(uint i = 0; i < userRatings[_moviekey].length; i++){
+			total += userRatings[_moviekey][i].rating;
+		}
+		return total;
+	}
 }
 
 contract ratingAverage {
