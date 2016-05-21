@@ -17,7 +17,7 @@ contract Rating {
 	
 	struct UserRating
     {
-        bytes32 userId;   // short name (up to 32 bytes)
+        address userId;   // short name (up to 32 bytes)
         uint rating; // number of accumulated votes
     }
 	
@@ -25,9 +25,9 @@ contract Rating {
 	mapping (bytes32 => uint) public avgRatings;
 
 	
-	function setRating(bytes32 _userId, bytes32 _moviekey, uint256 _value) {
+	function setRating(bytes32 _moviekey, uint256 _value) {
 		userRatings[_moviekey].push(UserRating({
-			userId: _userId,
+			userId: msg.sender,
 			rating: _value
 		}));
 		avgRatings[_moviekey] = averageRating(_moviekey);
